@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Example</title>
+  <style>ul{list-style-type:none; display:flex;}</style>
+  <style type="text/css">
+    table, td, th { border: 2px #2b2b2b solid; }
+  </style
+</head>
+<body>
+
+<h1>Hello! Node.js</h1>
+<p>I am public/index.html</p>
+
+<div >
+    <p>アクセスしている端末</p>
+    <form action="http://localhost:3000/detail" method="POST"　name="myform">
+        <input type="hidden" name="oskind" value="Chrome on Android">
+        <input type="hidden" name="name" value="Generic FIDO2iphone">
+        <input type="hidden" name="date" value="2021.10.21">
+        <button name="button01" id="btn" style="text-align: left;"><div style="margin-left:20px ;">  OS:Chrome on Android</div><div style="margin-left:15px ;">  名称:Generic FIDO2iphone</div><div>登録日:2021.10.21</div></button>
+        <!-- ボタン要素で送信ボタンを設置 
+        <button id="btn">送信</button>
+    -->
+    </form>
+    <p>登録済の端末</p>
+    <form action="http://localhost:3000/" method="POST"　name="myform1">
+        <input type="hidden" name="name" value="トコちん">
+        <!-- ボタン要素で送信ボタンを設置 -->
+        <button name="button02"  id="btn" style="text-align: left;"><div style="margin-left:20px ;">  OS:Chrome on IOS</div><div style="margin-left:15px ;">  名称:Generic FIDO2iphone</div><div>登録日:2021.10.20</div></button>
+    </form>
+    <p>登録済の端末</p>
+    <form action="http://localhost:3000/" method="POST"　name="myform2">
+        <input type="hidden" name="name" value="トコなつ">
+        <!-- ボタン要素で送信ボタンを設置 -->
+        <button name="button03" id="btn" style="text-align: left;"><div style="margin-left:20px ;">  OS:Chrome on Windows</div><div style="margin-left:15px ;">  名称:Generic FIDO2iphone</div><div>登録日:2021.10.19</div></button>
+    </form>
+
+</div>
+<ul >
+  <li><img src="/image/usa.png"  width="150"></li>
+  <li><img src="/image/cat.png"  width="150"></li>
+  <li><img src="/image/bear.png" width="150"></li>
+</ul>
+
+<script>
+    var btn = document.getElementById('btn');
+ 
+    btn.addEventListener('click', function() {
+  
+      //submit()でフォームの内容を送信
+      document.myform.submit();
+    })
+  </script>
+
+</body>
+</html>
