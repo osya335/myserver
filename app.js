@@ -1,30 +1,67 @@
-/* 1. expressモジュールをロードし、インスタンス化してappに代入。*/
-var express = require("express");
-var app = express();
+const express = require("express");
+const app  = express();
+const port = 3000;
+var ejs = require('ejs');
+app.engine('ejs', ejs.renderFile);
 
-/* 2. listen()メソッドを実行して3000番ポートで待ち受け。*/
-var server = app.listen(3000, function(){
-    console.log("Node.js is listening to PORT:" + server.address().port);
+
+// ルーティングの設定
+/*
+app.get("/", (req, res) =>{
+  const data = {
+    "message": "Hello world",
+    "date": "2020-06-29"
+  };
+
+  res.json(data);
+});
+*/
+
+app.get("/", (req, res) =>{
+  res.sendFile(`${__dirname}/public/index.html`);
+  console.log("/ へアクセスがありました");
+});
+/*
+app.get("/", (req, res) =>{
+  const name = req.query.name;
+  res.send(`君の名は ${name}`);
+  console.log("/ へアクセスがありました");
+});
+*/
+app.get("/image/:file", (req, res) =>{
+  const file = req.params.file;
+  res.sendFile(`${__dirname}/public/image/${file}`);
+  console.log(`/image/${file} へアクセスがありました`);
 });
 
-/* 3. 以後、アプリケーション固有の処理 */
 
-// 写真のサンプルデータ
-var photoList = [
-    {
-        id: "001",
-        name: "photo001.jpg",
-        type: "jpg",
-        dataUrl: "http://localhost:3000/data/photo001.jpg"
-    },{
-        id: "002",
-        name: "photo002.jpg",
-        type: "jpg",
-        dataUrl: "http://localhost:3000/data/photo002.jpg"
-    }
-]
+// POSTのクエリーを良い感じに処理する
+app.use(express.urlencoded({extended: true}));
 
-// 写真リストを取得するAPI
-app.get("/api/photo/list", function(req, res, next){
-    res.json(photoList);
+// ルーティングの設定
+app.post("/detail", (req, res) =>{
+  const oskind = req.body.oskind;
+  const name = req.body.name;
+  const date = req.body.date;
+  
+
+//  res.send(`OS: ${oskind}<br>名称: ${name}<br>登録日: ${date}`);
+
+  res.render('TermDetail.ejs', {
+    oskind: oskind,
+    name: name,
+    date: date
+  });
+
+  console.log("/ へアクセスがありました");
+});
+
+
+
+
+
+
+// HTTPサーバを起動する
+app.listen(port, () => {
+  console.log(`listening at http://localhost:${port}`);
 });
