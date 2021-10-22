@@ -1,0 +1,23 @@
+{
+  "name": "myserver",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Masahiko Tairabune",
+  "license": "ISC",
+  "description": "My 1st web server",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osya335/myserver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/osya335/myserver/issues"
+  },
+  "homepage": "https://github.com/osya335/myserver#readme"
+}
